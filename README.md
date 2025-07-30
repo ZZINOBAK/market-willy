@@ -30,8 +30,8 @@ JSP/Servlet 기반의 중고거래 웹 애플리케이션입니다.
 ## 🗂 프로젝트 구조
 
 Market-Willy  
-   src/com/mystudy       # Java 클래스 및 Servlet  
-   WebContent/           # JSP, HTML, CSS 등 정적/동적 자원  
+- src/com/mystudy       # Java 클래스 및 Servlet
+- WebContent/           # JSP, HTML, CSS 등 정적/동적 자원  
 
 ## 🔧 설치 및 실행 방법
 
