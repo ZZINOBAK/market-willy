@@ -20,7 +20,7 @@ JSP/Servlet 기반의 중고거래 웹 애플리케이션입니다.
 
 - Language: Java (JDK 1.8)
 - Web: JSP, Servlet, JSTL
-- DB: Oracle
+- DB: Oracle 11g
 - WAS: Apache Tomcat 9
 - Build Tool: 수동 빌드
 - Versioning: Git / GitHub
@@ -29,11 +29,9 @@ JSP/Servlet 기반의 중고거래 웹 애플리케이션입니다.
 
 ## 🗂 프로젝트 구조
 
-📦 Market-Willy  
-├── src/com/mystudy       # Java 클래스 및 Servlet  
-├── WebContent/           # JSP, HTML, CSS 등 정적/동적 자원  
-├── .gitignore  
-└── README.md
+Market-Willy  
+   src/com/mystudy       # Java 클래스 및 Servlet  
+   WebContent/           # JSP, HTML, CSS 등 정적/동적 자원  
 
 ## 🔧 설치 및 실행 방법
 
@@ -48,9 +46,6 @@ JSP/Servlet 기반의 중고거래 웹 애플리케이션입니다.
 4. Tomcat 9 서버 등록 후 실행  
    - WebContent 폴더를 Web root로 설정
 
-5. 브라우저에서 접속  
-   http://localhost:8080/
-
 ## 🧩 향후 개선 예정
 
 - MySQL 기반 DB로 마이그레이션
@@ -63,4 +58,3 @@ JSP/Servlet 기반의 중고거래 웹 애플리케이션입니다.
 
 - 구현 기간: 2023.09 ~ 2023.09  
 - 참여 인원: 4명 (본인은 장바구니, 주문내역 기능 구현 담당)  
-- 배포 경험: 없음 (로컬 서버 실행 기준)
