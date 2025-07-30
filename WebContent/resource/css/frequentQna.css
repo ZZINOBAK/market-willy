@@ -1,0 +1,265 @@
+@charset "UTF-8";
+
+.subOl{display:none;}
+
+.main, .main2{
+	width: 800px;
+	margin-left: 30%;
+    margin-top: 3%;
+}
+
+.category{
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    font-family: "Noto Sans", "malgun gothic", AppleGothic, dotum, sans-serif;
+    --swiper-theme-color: #007aff;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    width: 100%;
+    padding: 20px 0px;
+    border-bottom: 1px solid rgb(51, 51, 51);
+    border-top: 2px solid rgb(51, 51, 51);
+}
+.qnaList{
+	 line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    font-family: "Noto Sans", "malgun gothic", AppleGothic, dotum, sans-serif;
+    --swiper-theme-color: #007aff;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 14px;
+    color: #333;
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+.qnali{
+	line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    font-family: "Noto Sans", "malgun gothic", AppleGothic, dotum, sans-serif;
+    --swiper-theme-color: #007aff;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 14px;
+    color: #333;
+    list-style-type: none;
+    padding: 7px;
+    box-sizing: border-box;
+    margin: 0;
+    cursor: pointer;
+}
+.qnali2{
+	    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    font-family: "Noto Sans", "malgun gothic", AppleGothic, dotum, sans-serif;
+    --swiper-theme-color: #007aff;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 14px;
+    color: #333;
+    list-style-type: none;
+    cursor: pointer;
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(244, 244, 244);
+}
+.css-dx3647 e1cfowvj2{
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    font-family: "Noto Sans", "malgun gothic", AppleGothic, dotum, sans-serif;
+    --swiper-theme-color: #007aff;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 14px;
+    list-style-type: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin: 0;
+    text-align: center;
+    padding: 20px 0px;
+    color: rgb(76, 76, 76);
+    flex-basis: 70px;
+}
+.css-1tixomb e1cfowvj2{
+	line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    font-family: "Noto Sans", "malgun gothic", AppleGothic, dotum, sans-serif;
+    --swiper-theme-color: #007aff;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 14px;
+    list-style-type: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin: 0;
+    text-align: center;
+    padding: 20px 0px;
+    color: rgb(76, 76, 76);
+    flex-basis: 135px;
+}
+.css-fzefrb e1cfowvj2{
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    font-family: "Noto Sans", "malgun gothic", AppleGothic, dotum, sans-serif;
+    --swiper-theme-color: #007aff;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 14px;
+    list-style-type: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 20px 0px 20px 20px;
+    color: rgb(76, 76, 76);
+    flex: 1 1 0%;
+    text-align: left;
+}
+
+.css-d3v9zr e1cfowvj0{
+	line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    font-family: "Noto Sans", "malgun gothic", AppleGothic, dotum, sans-serif;
+    --swiper-theme-color: #007aff;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 14px;
+    color: #333;
+    list-style-type: none;
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    overflow: hidden;
+    opacity: 1;
+    height: auto;
+}
+.css-1kj0ddz eec36oi0{
+	    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    font-family: "Noto Sans", "malgun gothic", AppleGothic, dotum, sans-serif;
+    --swiper-theme-color: #007aff;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 14px;
+    list-style-type: none;
+    box-sizing: border-box;
+    margin: 0;
+    position: relative;
+    padding: 30px 30px 30px 70px;
+    text-align: left;
+    color: rgb(76, 76, 76);
+    white-space: pre-line;
+}
+
+.css-dx3647 {
+    text-align: center;
+    padding: 20px 0px;
+    color: rgb(76, 76, 76);
+    flex-basis: 70px;
+}
+.css-1tixomb {
+    text-align: center;
+    padding: 20px 0px;
+    color: rgb(76, 76, 76);
+    flex-basis: 135px;
+}
+.css-fzefrb {
+    padding: 20px 0px 20px 20px;
+    color: rgb(76, 76, 76);
+    flex: 1 1 0%;
+    text-align: left;
+}
+
+.css-hyfxhw {
+    flex-basis: 70px;
+    text-align: center;
+    line-height: 20px;
+    font-weight: 400;
+    color: rgb(51, 51, 51);
+}
+.css-1cn1979 {
+    flex-basis: 135px;
+    text-align: center;
+    line-height: 20px;
+    font-weight: 400;
+    color: rgb(51, 51, 51);
+}
+.css-1ym8aqm {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    text-align: center;
+    line-height: 20px;
+    font-weight: 400;
+    color: rgb(51, 51, 51);
+}
+
+.css-d3v9zr{
+	display: none;
+}
+.css-1kj0ddz {
+    position: relative;
+    padding: 30px 30px 30px 70px;
+    text-align: center;
+    color: rgb(76, 76, 76);
+    white-space: pre-line;
+}
+
+/* 하단 버튼 부분 */
+.css-1kbzkwh {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 60px 0px 30px;
+}
+.css-rzcdhr:disabled {
+    background-image: url(https://res.kurly.com/kurly/ico/2021/paging-prev-disabled.svg);
+    cursor: default;
+}
+.css-1jwilit:disabled {
+    background-image: url(https://res.kurly.com/kurly/ico/2021/paging-next-disabled.svg);
+    cursor: default;
+}
+.css-rzcdhr {
+    width: 44px;
+    height: 44px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url(https://res.kurly.com/kurly/ico/2021/paging-prev-activated.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.css-1jwilit {
+    width: 44px;
+    height: 44px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: url(https://res.kurly.com/kurly/ico/2021/paging-next-activated.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.css-sxxs1g button + button {
+    margin-left: 12px;
+}
+.css-7qb0sc {
+    overflow: hidden;
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+}

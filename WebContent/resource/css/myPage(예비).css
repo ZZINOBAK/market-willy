@@ -1,0 +1,164 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  font-family:sans-serif;
+} 
+
+.joinForm {
+  position:absolute;
+  width: 500px;
+  height: 800px;
+  padding: 30px, 20px;
+  background-color:#FFFFFF;
+  /* text-align:center; */
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  border-radius: 15px;
+}
+
+.joinForm h2 {
+  margin: 30px;
+  background-color: #FFFFFF;
+}
+.joinForm h4{
+	margin: 20px;
+	text-align: left;
+	background-color:#FFFFFF;
+}
+
+.textForm {
+  border-bottom: 2px solid #adadad;
+  margin: auto;
+  padding: 10px 10px;
+  background-color:#FFFFFF;
+}
+.btnForm{
+	margin-top: 20px;
+	text-align: right;
+	background-color:#FFFFFF;
+}
+
+span{
+	left: 20%;
+	text-align: left;
+	font-size: 13px;
+}
+
+input:focus {
+	border: 1px solid #adadad;
+}
+
+.id {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.pw {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.name {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.email {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.nickname {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.cellphoneNo {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.addr {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:20px;
+  background: none;
+}
+
+.btn {
+  left:100%;
+  transform: translateX(-50%);
+  margin: 10px;
+  width:30%;
+  height:40px;
+  background: linear-gradient(125deg,#5f0080,#8734a3,#5f0080);
+  background-position: left;
+  background-size: 200%;
+  color:white;
+  font-weight: bold;
+  border:none;
+  cursor:pointer;
+  transition: 0.4s;
+  display:inline-block;
+}
+.btn2 {
+  position: relative;
+  left: 15%;
+  transform: translateX(-50%);
+  margin-bottom: 0px;
+  margin-top: 10px;
+  width:30%;
+  height:30px;
+  background: linear-gradient(125deg,#5f0080,#8734a3,#5f0080);
+  background-position: left;
+  background-size: 200%;
+  color:white;
+  font-weight: bold;
+  border:none;
+  cursor:pointer;
+  transition: 0.4s;
+  display:inline;
+  border-radius: 5%;
+}
+
+.btn:hover {
+  background-position: right;
+}
+.btn2:hover {
+  background-position: right;
+}

@@ -1,0 +1,25 @@
+# ========== Eclipse 설정 파일 ==========
+.settings/
+.classpath
+.project
+
+# ========== 빌드 결과물 ==========
+bin/
+build/
+target/
+out/
+
+# ========== OS / 환경 별 무시파일 ==========
+.DS_Store
+Thumbs.db
+
+# ========== 로그 / 백업 파일 ==========
+*.log
+*.tmp
+*.swp
+*.bak
+*.class
+
+# ========== 기타 ==========
+*.iml
+.idea/

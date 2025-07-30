@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+caption{
+	font-size: 2.5em;
+	font-weight: 500;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #808080;
+	text-align: left;
+}
+
+table {
+  border: 1px #a39485 solid;
+  font-size: 1.3em;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  width: 40%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-left: 30%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  table-layout: fixed;
+}
+
+a:hover{
+	border-bottom: 1px solid #808080;
+}
+
+th {
+  text-align: left;
+}
+  
+thead {
+  font-weight: bold;
+  color: #fff;
+  background: #5f0080;
+  text-align: center;
+}
+  
+ td, th {
+  padding: 1em .5em;
+  vertical-align: middle;
+}
+  
+ td {
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  background: #fff;
+}
+
+.Qnum { width: 10%; text-align: center;}
+.title { width: 20%;}
+.user { width: 15%; text-align: center;}
+.date { width: 15%; text-align: center;}
+.info{width:10%; text-align: center;}
+.centers{ text-align: center; }
+	
+  
+  /*페이징 부분 css */
+  .paging { list-style: none; }
+	.paging li {
+		float: left;
+		margin-right: 8px;
+		border-radius: 10%;
+	}
+	.paging li a {
+		text-decoration: none;
+		display: block;
+		padding: 3px 7px;
+		border: 1px solid #8734a3;
+		background-color: #8734a3;
+		font-weight: bold;
+		color: white;
+		border-radius: 10%;
+	}
+	
+	.paging .disable {
+		border: 1px solid #808080;
+		padding: 3px 7px;
+		color: #808080;
+	}
+	
+	.paging .now {
+		border: 1px solid #481c57;
+		padding: 3px 7px;
+		background-color:  #481c57;
+		color: white;
+	}
+	.write_btn{
+		border-style: none;
+		background-color: white;
+		size: 2em;
+	}
+	.write_btn:hover {
+		border-bottom: 1px solid #808080; 
+	}
+	
+	/*끝*/

@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jspProject">
+
+	<!-- 회원관리, 게시판 mapper 시작 -->
+	
+	<!-- 회원가입 -->
+	<insert id="register" parameterType="CustomerVO">
+		INSERT INTO CUSTOMER
+				(ID, NAME, PWD, ADDR, PHONE, EMAIL, zip, addr2)
+		VALUES (#{id}, #{name}, #{pwd}, #{addr}, #{phone}, #{email}, #{zip}, #{addr2})
+	</insert>
+	<!-- 회원정보 수정 -->
+	<update id="updateCustomer" parameterType="CustomerVO">
+		UPDATE CUSTOMER SET NAME = #{name}, PWD = #{pwd}, ADDR = #{addr}, PHONE = #{phone}, EMAIL = #{email}, ZIP = #{zip}, ADDR2 = #{addr2}
+		WHERE ID = #{id}
+	</update>
+	<!-- 회원탈퇴 -->
+	<delete id="deleteCustomer" parameterType="CustomerVO">
+		DELETE FROM CUSTOMER
+		WHERE ID = #{id}
+	</delete>
+	
+	<!-- 전체 회원 조회 -->
+	<select id="allCustomer" resultType="CustomerVO">
+		SELECT * FROM CUSTOMER
+	</select>
+	
+	<!-- 아이디로 검색 -->
+	<select id="checkId" parameterType="String" resultType="CustomerVO">
+		SELECT * FROM CUSTOMER
+		WHERE ID = #{id}
+	</select>
+	
+	<!-- 이름으로 검색 -->
+	<select id="checkName" parameterType="String" resultType="CustomerVO">
+		SELECT * FROM CUSTOMER
+		WHERE NAME = #{name}
+	</select>
+	
+	<!-- 이메일로 검색 -->
+	<select id="checkEmail" parameterType="String" resultType="CustomerVO">
+		SELECT * FROM CUSTOMER
+		WHERE EMAIL = #{email}
+	</select>
+	
+	<!-- 게시글 작성 -->
+	<insert id="writeQna" parameterType="QnaVO">
+		INSERT INTO QNA (QNA_NUM, ID, QNA_TITLE, QNA_CONTENT, QNA_DATE, QNA_PWD)
+		VALUES(QNA_SEQ.NEXTVAL, #{id}, #{qnaTitle}, #{qnaContent}, SYSDATE, #{qnaPwd})
+	</insert>
+	
+	<!-- 게시글 전체조회 -->
+	<select id="allQna" resultType="QnaVO">
+		SELECT QNA_NUM, ID, QNA_TITLE, QNA_CONTENT, QNA_DATE, QNA_PWD
+		FROM QNA
+	</select>
+	
+	<!-- 아이디로 게시글 조회 -->
+	<select id="selectQna_id" parameterType="String" resultType="QnaVO">
+		SELECT * FROM QNA
+		WHERE ID = #{id}
+	</select>
+	
+	<!-- 답변완료된 게시글 조회 -->
+	<select id="answerQna" resultType="QnaVO">
+		SELECT Q.QNA_NUM, Q.ID, Q.QNA_TITLE, Q.QNA_PWD, Q.QNA_DATE, A.ANS_DATE
+		FROM QNA Q, QNA_ANSWER A
+		WHERE Q.QNA_NUM = A.ANS_NUM
+	</select>
+	<!-- 답변안된 게시글 조회 -->
+	<select id="notAnswerQna" resultType="QnaVO">
+		SELECT * FROM QNA 
+		WHERE QNA_INFO = 'x'
+	</select>
+	
+	<!-- QNA_NUM으로 게시글 상세보기 -->
+	<select id="viewQna" parameterType="int" resultType="QnaVO">
+		SELECT * FROM QNA
+		WHERE QNA_NUM = #{qnaNum}
+	</select>
+	
+	<!-- 게시글 수정 -->
+	<update id="updateQna" parameterType="QnaVO">
+		UPDATE QNA SET QNA_TITLE = #{qnaTitle}, QNA_CONTENT = #{qnaContent}, QNA_PWD = #{qnaPwd}
+		WHERE QNA_NUM = #{qnaNum}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteQna" parameterType="int">
+		DELETE FROM QNA
+		WHERE QNA_NUM = #{qnaNum}
+	</delete>
+	
+	<!-- 게시글 답변 -->
+	<insert id="writeAnswerQna" parameterType="QnaAnswerVO">
+		INSERT INTO QNA_ANSWER (ANS_NUM, ANS_TITLE, ANS_CONTENT, ANS_DATE)
+		VALUES (#{ansNum}, #{ansTitle}, #{ansContent}, SYSDATE)
+	</insert>
+	
+	<!-- 답변시 QNA_INFO 'o'처리 -->
+	<update id="updateQna_OX">
+		UPDATE QNA SET QNA_INFO = 'o'
+		WHERE QNA_NUM = #{ansNum}
+	</update>
+	
+	<!-- 게시글 상세보기 qnaNum으로 답변찾기 -->
+	<select id="findAnswer" parameterType="int" resultType="QnaAnswerVO">
+		SELECT * FROM QNA_ANSWER
+		WHERE ANS_NUM = #{qnaNum}
+	</select>
+	
+	<!-- 회원관리, 게시판 mapper 끝 -->
+	
+ 	<!-- 상품관련 mapper -->
+ 	<select id="listProduct" resultType="com.mystudy.project.VO.ProductsVO">
+		SELECT * FROM PRODUCTS 
+	</select>
+	
+	<!-- <select id="listone" resultType="com.mystudy.project.VO.ProductsVO">
+		SELECT PRODUCT_NUM, CATEGORY_MAIN, CATEGORY_SUB, PRODUCT_NAME, PRICE, SALEPRICE, IMAGE, CONTENT, REGDATE, P_COUNT FROM PRODUCTS 
+		WHERE PRODUCT_NAME LIKE #{productname} 
+	</select> -->
+	<select id="listone" resultType="com.mystudy.project.VO.ProductsVO">
+      SELECT PRODUCT_NUM, CATEGORY_MAIN, CATEGORY_SUB, PRODUCT_NAME, PRICE, SALEPRICE, IMAGE, CONTENT, REGDATE, P_COUNT FROM PRODUCTS 
+      WHERE PRODUCT_NAME LIKE '%'||#{productname}||'%' 
+   </select>
+	
+	<select id="one" resultType="com.mystudy.project.VO.ProductsVO">
+		SELECT PRODUCT_NUM, CATEGORY_MAIN, CATEGORY_SUB, PRODUCT_NAME, PRICE, SALEPRICE, IMAGE, CONTENT, REGDATE, P_COUNT FROM PRODUCTS 
+		WHERE PRODUCT_NUM LIKE #{productnum} 
+	</select>
+	
+	<select id="nameone" resultType="com.mystudy.project.VO.ProductsVO">
+		SELECT PRODUCT_NUM, CATEGORY_MAIN, CATEGORY_SUB, PRODUCT_NAME, PRICE, SALEPRICE, IMAGE, CONTENT, REGDATE, P_COUNT FROM PRODUCTS 
+		WHERE PRODUCT_NAME LIKE #{productname} 
+	</select>
+	
+	<select id="numone" resultType="com.mystudy.project.VO.ProductsVO">
+		SELECT PRODUCT_NUM, CATEGORY_MAIN, CATEGORY_SUB, PRODUCT_NAME, PRICE, SALEPRICE, IMAGE, CONTENT, REGDATE, P_COUNT FROM PRODUCTS 
+		WHERE PRODUCT_NUM LIKE #{productnum} 
+	</select>
+	
+	<insert id="proinsert" parameterType="com.mystudy.project.VO.ProductsVO">
+		INSERT INTO PRODUCTS
+    		(PRODUCT_NUM, CATEGORY_MAIN, CATEGORY_SUB, PRODUCT_NAME, PRICE, SALEPRICE, IMAGE, CONTENT, REGDATE, P_COUNT)
+		VALUES (PRODUCTS_SEQ.NEXTVAL, #{categoryMain}, #{categorySub}, #{productname}, #{price}, #{saleprice}, #{image}, #{content}, SYSDATE, #{pcount})
+	</insert>
+	
+	<update id="update" parameterType="com.mystudy.project.VO.ProductsVO">
+		UPDATE PRODUCTS
+	     SET CATEGORY_MAIN = #{categoryMain},
+	     	 CATEGORY_SUB = #{categorySub},
+	     	 PRODUCT_NAME = #{productname},
+	     	 PRICE = #{price},
+	     	 SALEPRICE = #{saleprice},
+	     	 IMAGE = #{image},
+	     	 CONTENT = #{content},
+	         P_COUNT = #{pcount}
+	     WHERE PRODUCT_NUM = #{productnum}
+	</update>
+	
+	<delete id="delete" parameterType="com.mystudy.project.VO.ProductsVO">
+		DELETE PRODUCTS
+	     WHERE PRODUCT_NUM = #{productnum}
+	</delete>
+	
+	<select id="totalCount" resultType="int">
+        SELECT COUNT(*) AS CNT FROM PRODUCTS
+    </select>
+    
+    <select id="plist" resultType="com.mystudy.project.VO.ProductsVO"
+			parameterType="map">
+		SELECT *
+		  FROM (SELECT ROWNUM AS RNUM, B.*
+		          FROM (SELECT *
+		                FROM PRODUCTS
+		                ORDER BY PRODUCT_NUM DESC) B
+		       )
+		 WHERE RNUM BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<delete id="deleteReview" parameterType="com.mystudy.project.VO.ReviewVO">
+       DELETE FROM REVIEW
+      WHERE O_NUM = #{onum}
+    </delete>
+	<!-- 상품관리 mapper 끝 -->
+	
+	
+	<!-- 장바구니, 주문내역 mapper -->
+	
+	<!-- 장바구니보기(selectall) 관리자만 가능 -->
+	<select id="clist" resultType="cartVO">
+	SELECT * FROM CART ORDER BY C_NUM
+	</select>
+	
+	<!-- 장바구니보기 by 아이디 -->
+	<select id="cListId" resultType="cartVO">
+	SELECT C.C_NUM, C.PRODUCT_NUM, C.ID, P.PRODUCT_NAME, C.C_COUNT, P.PRICE, P.SALEPRICE, P.IMAGE, P.CONTENT
+	FROM CART C
+	JOIN PRODUCTS P ON C.PRODUCT_NUM = P.PRODUCT_NUM
+	WHERE C.ID = #{id}
+	ORDER BY C.C_NUM
+	</select>
+	
+	<!-- 장바구니보기 by 아이디 + 상품번호 -->
+	<select id="cSelect" parameterType="CartVO" resultType="cartVO">
+	SELECT * FROM CART 
+	WHERE ID = #{id}
+	AND PRODUCT_NUM = #{productNum}
+	</select>
+	
+	<!-- 장바구니담기(insert) fk(productNum, id)-->
+	<insert id="cInsert" parameterType="CartVO">
+	INSERT INTO CART (C_NUM, PRODUCT_NUM, ID, PRODUCT_NAME, C_COUNT, PRICE, SALEPRICE, IMAGE)
+	SELECT
+	    cart_seq_test.nextval,
+	    P.PRODUCT_NUM,
+	    #{id},
+	    P.PRODUCT_NAME,
+	    #{cCount},
+	    P.PRICE,
+	    P.SALEPRICE,
+	    P.IMAGE
+	FROM PRODUCTS P
+	WHERE P.PRODUCT_NUM = #{productNum} 
+	</insert>
+	
+	<!-- 장바구니수량수정(update) -->
+	<update id="cUpdate" parameterType="int">
+	UPDATE CART 
+	SET C_COUNT = #{cCount}
+	WHERE C_NUM = #{cNum}
+	</update>
+		
+	<!-- 장바구니삭제(delete) -->
+	<delete id="cDelete" parameterType="CartVO">
+	DELETE
+	FROM CART
+	WHERE PRODUCT_NUM = #{productNum}
+	AND ID = #{id}
+	</delete>
+	
+	<!-- 구매내역 보기(selectall) 관리자만-->
+	<select id="olist" resultType="orderlistVO">
+		SELECT O.*, p.image, p.content 
+		FROM ORDER_LIST O
+		JOIN products p ON o.product_num = p.product_num
+		ORDER BY O.O_NUM
+	</select>
+	
+	<!-- 구매내역 보기 by 아이디 -->
+	<select id="oListId" resultType="orderlistVO">
+	SELECT o.*, p.image, p.content
+	FROM ORDER_LIST o
+	JOIN products p ON o.product_num = p.product_num
+	WHERE o.id = #{id}
+	ORDER BY o.O_DATE DESC
+	</select>
+	
+	<!-- 구매내역 상세보기 by 아이디, 주문번호, 날짜 -->
+	<select id="orderDetail" parameterType="orderlistVO" resultType="orderlistVO">
+	SELECT o.*, p.image, p.content
+	FROM order_list o
+	JOIN products p ON o.product_num = p.product_num
+	WHERE id = #{id}
+	AND pay_Num = #{payNum}
+	</select>
+	
+	<!-- 구매내역 상세보기 payinfo by 아이디, 주문번호, 날짜 -->
+	<select id="orderDetailPay" parameterType="int" resultType="com.mystudy.project.VO.PayInfoVO">
+	SELECT *
+	FROM pay_info
+	WHERE pay_Num = #{payNum}
+	</select>
+	
+	<!-- 장바구니에서 넘어간 만큼 O_NUM넘기기 -->
+	<select id="selectItem" resultType="orderlistVO" parameterType="map">
+	SELECT O.*, p.image, p.content
+	FROM ORDER_LIST O
+	JOIN products p ON O.product_num = p.product_num
+	WHERE id = #{id} AND <![CDATA[ROWNUM <= #{selectedItem}]]>
+	ORDER BY o_num DESC
+	</select>
+	
+	<!-- 구매내역 전체 건수 조회 as 관리자 -->
+	<select id="totalCountOrder" resultType="int">
+	SELECT COUNT(*) AS CNT FROM ORDER_LIST
+	</select>
+	
+	<!-- 구매내역 페이지에 해당하는 게시글 조회 as 관리자 -->
+	<select id="list" resultType="orderlistVO" parameterType="map">
+	SELECT *
+	  FROM (SELECT ROWNUM AS RNUM, O.*
+	          FROM (SELECT L.*, p.image, p.content
+	                FROM ORDER_LIST L
+	                JOIN products p ON L.product_num = p.product_num
+	                ORDER BY L.O_NUM DESC) O
+	       )
+	 WHERE RNUM BETWEEN #{begin} AND #{end}
+	</select>
+	
+	
+	<!-- 구매내역 페이지에 해당하는 게시글 조회 as 관리자 only 환불중-->
+	<select id="listrDelete" resultType="orderlistVO" parameterType="map">
+	SELECT *
+	FROM (
+	    SELECT ROWNUM AS RNUM, O.*
+	    FROM (
+	        SELECT L.*, p.image, p.content
+	        FROM order_list L
+	        JOIN products p ON L.product_num = p.product_num
+	        WHERE payment = '환불중'  -- 여기에 조건을 추가합니다
+	        ORDER BY L.O_NUM DESC
+	    ) O
+	)
+	WHERE RNUM BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<!-- 구매내역 페이지에 해당하는 게시글 조회 as 관리자 by 아이디-->
+	<select id="listbyid" resultType="orderlistVO" parameterType="map">
+	SELECT *
+	  FROM (SELECT ROWNUM AS RNUM, O.*
+	          FROM (SELECT L.*, p.image, p.content
+	                FROM ORDER_LIST L
+	                JOIN products p ON L.product_num = p.product_num
+	                WHERE ID = #{id}
+	                ORDER BY L.O_NUM DESC) O
+	       )
+	 WHERE RNUM BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<!-- 구매내역 페이지에 해당하는 게시글 조회 as 관리자 by 주문번호-->
+	<select id="listbyonum" resultType="orderlistVO" parameterType="map">
+	SELECT *
+	  FROM (SELECT ROWNUM AS RNUM, O.*
+	          FROM (SELECT L.*, p.image, p.content
+	                FROM ORDER_LIST L
+	                JOIN products p ON L.product_num = p.product_num
+	                WHERE L.O_NUM = #{oNum}
+	                ORDER BY L.O_NUM DESC) O
+	       )
+	 WHERE RNUM BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<!-- 구매내역 페이지에 해당하는 게시글 조회 as 관리자 by 상품번호-->
+	<select id="listbyproductnum" resultType="orderlistVO" parameterType="map">
+	SELECT *
+	  FROM (SELECT ROWNUM AS RNUM, O.*
+	          FROM (SELECT L.*, p.image, p.content
+	                FROM ORDER_LIST L
+	                JOIN products p ON L.product_num = p.product_num
+	                WHERE L.PRODUCT_NUM = #{productNum}
+	                ORDER BY L.O_NUM DESC) O
+	       )
+	 WHERE RNUM BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<!-- 구매내역 1개 조회 as 관리자 -->
+	<select id="oneOrder" resultType="orderlistVO" parameterType="int">
+	 SELECT O.*, p.image, p.content
+     FROM ORDER_LIST O
+     JOIN products p ON O.product_num = p.product_num
+     WHERE O.O_NUM = #{oNum}
+	</select>
+	
+	<!-- 구매내역 추가하기(insert) fk(productNum, id)-->
+	<insert id="oInsert1" parameterType="OrderListVO">
+	INSERT INTO ORDER_LIST
+	(O_NUM, PRODUCT_NUM, ID, C_COUNT, O_DATE, PAYMENT, PRODUCT_NAME, PRICE, SALEPRICE)
+	VALUES 
+	(order_list_seq_test.nextval, #{productNum}, #{id}, #{cCount}, sysdate, 'test', #{productName}, #{price}, #{saleprice})
+	</insert>
+	
+	<!-- 구매내역 추가하기(insert) fk(productNum, id) 장바구니에서 추가하기-->
+	<insert id="oInsert2" parameterType="OrderListVO">
+	INSERT INTO ORDER_LIST
+		(O_NUM, PRODUCT_NUM, ID, C_COUNT, O_DATE, PAYMENT, 
+		PRODUCT_NAME, PRICE, SALEPRICE)
+	SELECT 
+		<!-- order_list_seq_test.nextval, -->
+		#{oNum},
+	    #{productNum},
+	    #{id},
+	    c.C_COUNT,
+	    sysdate,
+	    '결제중',
+	    p.PRODUCT_NAME,
+	    p.PRICE,
+	    p.SALEPRICE
+	FROM cart c
+		JOIN products p ON c.PRODUCT_NUM = p.PRODUCT_NUM
+	WHERE c.PRODUCT_NUM = #{productNum}
+	AND c.ID = #{id}
+	<!-- <selectKey keyProperty="oNum" resultType="String" order="AFTER">
+      SELECT O_NUM FROM dual
+    </selectKey> -->
+	</insert>
+	
+	<!-- onum 지정하기 -->
+	<select id="generateOrderNumber" resultType="int">
+	SELECT order_list_seq_test.nextval
+	FROM dual
+	</select>
+	
+	<!-- 카트에서 오더리스트로 데이터 추가하고 난후 오넘으로 셀렉해서 뽑아내기 -->
+	<select id="getOneByoNum" resultType="orderlistVO" parameterType="int">
+	SELECT O.*, P.image, P.content
+	FROM ORDER_LIST O
+	JOIN PRODUCTS P ON O.PRODUCT_NUM = P.PRODUCT_NUM
+	WHERE O_NUM LIKE '%' || #{oNum} || '%'
+	ORDER BY o_num DESC
+	</select>
+	
+	<!-- 결제 후 오더리스트 payment 데이터 결제정보로 수정하기 -->
+	<update id="updateOrderListoPayment" parameterType="map">
+	UPDATE ORDER_LIST
+	SET PAYMENT = '결제완료',
+		PAY_NUM = #{payNum}
+	WHERE O_NUM = #{oNum}
+	</update>
+	
+	<!-- 구매내역 페이지에 해당하는 게시글 조회 as 관리자 sort hot-->
+	<select id="listhot" resultType="orderlistVO" parameterType="map">
+	 SELECT *
+		FROM (
+	    SELECT ROWNUM AS RNUM, O.*
+	    FROM (
+	        SELECT O.product_num, MAX(P.image) AS image, MAX(O.product_name) AS product_name, MAX(P.content) AS content, MAX(O.price) AS price, MAX(O.saleprice) AS saleprice, SUM(O.c_count) AS C_COUNT
+	        FROM order_list O
+	        JOIN PRODUCTS P ON O.PRODUCT_NUM = P.PRODUCT_NUM
+	        GROUP BY O.product_num
+	        ORDER BY C_COUNT DESC
+	    ) O
+	)
+	 WHERE RNUM BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<!-- 구매 취소(환불)하기(update) -->
+	<update id="oUpdate" parameterType="OrderListVO">
+	UPDATE ORDER_LIST
+	SET PAYMENT = #{payment}
+	WHERE O_NUM = #{oNum}
+	</update>
+	
+	<!-- 구매 취소하기(delete) -->
+	<delete id="oDelete" parameterType="int">
+	DELETE
+	FROM ORDER_LIST
+	WHERE O_NUM = #{oNum}
+	</delete>
+	
+	<!-- 장바구니, 주문내역 끝 -->
+	
+	<!-- 결제 부분 시작-->
+	<select id="payInfoId" resultType="com.mystudy.project.VO.PayInfoVO">
+		SELECT 
+		O.O_NUM, P.RECEIVER, P.O_ADDR, P.O_PHONE,
+		P.O_PAYMENT, P.PRICE, P.SALEPRICE, P.O_DATE,
+		P.PAYPRICE, P.INFO, P.O_COUNT, S.PRODUCT_NAME
+		FROM ORDER_LIST O, 
+		     PAY_INFO P,
+		     PRODUCTS S
+		WHERE O.O_NUM = P.O_NUM
+		  AND O.PRODUCT_NUM = S.PRODUCT_NUM
+		  AND O.ID = #{id}
+          
+	</select>
+	
+	<select id="payInfoAdmin" resultType="com.mystudy.project.VO.PayInfoVO">
+			SELECT 
+		O.O_NUM, P.RECEIVER, P.O_ADDR, P.O_PHONE,
+		P.O_PAYMENT, P.PRICE, P.SALEPRICE, P.O_DATE,
+		P.PAYPRICE, P.INFO, P.O_COUNT, S.PRODUCT_NAME,
+        O.ID
+		FROM ORDER_LIST O, 
+		     PAY_INFO P,
+		     PRODUCTS S
+		WHERE O.O_NUM = P.O_NUM
+		  AND O.PRODUCT_NUM = S.PRODUCT_NUM
+		  ORDER BY O.O_NUM
+	</select>
+	
+	
+	<!-- PAY_INFO -->
+
+	<insert id="insertPayInfo" parameterType="com.mystudy.project.VO.PayInfoVO">	
+		INSERT INTO PAY_INFO (PAY_NUM, RECEIVER, O_ADDR, O_PHONE,
+		O_PAYMENT, PRICE, PAYPRICE, INFO)
+		values (pay_info_seq.nextval, #{receiver}, #{oAddr}, #{oPhone}, #{oPayment}, 
+		#{price}, #{payprice}, 0)		
+		
+	<selectKey keyProperty="payNum" resultType="int" order="AFTER">
+      SELECT pay_info_seq.currval FROM dual
+    </selectKey>
+	</insert>
+	
+	<select id="addr" resultType="com.mystudy.project.VO.PayInfoVO">
+		SELECT 
+		ADDR, ZIP, ADDR2
+		FROM CUSTOMER
+		WHERE ID = #{id}
+	</select>
+	<!-- 결제 끝 -->
+	
+	<!-- 리뷰 -->
+	<select id="totCount" resultType="int">
+	SELECT COUNT(*) AS CNT FROM REVIEW
+	</select>
+
+	<select id="page" resultType="com.mystudy.project.VO.ReviewVO"
+		parameterType="map">
+		SELECT *
+		FROM (SELECT ROWNUM AS RNUM, B.*
+		FROM (SELECT *
+		FROM REVIEW
+		ORDER BY O_NUM DESC) B
+		)
+		WHERE RNUM BETWEEN #{begin} AND #{end}
+	</select>
+	
+	<select id="reviewlist"
+		resultType="com.mystudy.project.VO.ReviewVO" parameterType="int">
+		SELECT *
+		FROM REVIEW
+		WHERE PRODUCT_NUM = #{productnum}
+		ORDER BY R_DATE DESC
+	</select>
+	
+	<insert id="addReview" parameterType="com.mystudy.project.VO.ReviewVO">
+        INSERT INTO REVIEW 
+              (O_NUM, ID, PRODUCT_NUM, R_TITLE, R_CONTENT)
+         VALUES (#{onum}, #{id}, #{productnum}, #{rtitle}, #{rcontent})
+    </insert> 
+	
+</mapper>
